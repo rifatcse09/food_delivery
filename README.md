@@ -14,7 +14,7 @@ To install the application, follow the steps below:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/rifatcse09/project.git](https://github.com/rifatcse09/food_delivery
+   git clone https://github.com/rifatcse09/food_delivery
    ```
 
 2. Navigate to the cloned directory:
