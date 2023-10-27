@@ -40,6 +40,7 @@ echo "Installing laravel dependencies"
 docker-compose exec laradok_app composer install --prefer-source 
 echo "Generating laravel key"
 docker-compose exec laradok_app php artisan key:generate 
+docker-compose exec laradok_app php artisan migrate 
 
 #up containers
 echo "Re-start containers"

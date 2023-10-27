@@ -20,7 +20,10 @@ return new class extends Migration
             $table->string('long');
             $table->string('capture_time');
             $table->timestamps();
+            $table->index('lat');
+            $table->index('long');
         });
+      
     }
 
     /**
