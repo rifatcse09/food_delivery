@@ -7,6 +7,7 @@ use App\Models\RestaurantInfo;
 use App\Models\RiderInfo;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RiderInfoController extends Controller
 {
@@ -38,11 +39,21 @@ class RiderInfoController extends Controller
         $restaurentLat = $restaurent->lat;
         $restaurentLong = $restaurent->long;
 
-        $nearestRider = RiderInfo::selectRaw('*, (6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))) AS distance')
-        ->addBinding($restaurentLat, 'select')
-        ->addBinding($restaurentLong, 'select')
-        ->orderBy('distance')
-        ->first();
+        $nearestRider = RiderInfo::select("rider_infos.id"
+
+        ,DB::raw("6371 * acos(cos(radians(" . $restaurentLat . ")) 
+
+        * cos(radians(rider_infos.lat)) 
+
+        * cos(radians(rider_infos.long) - radians(" . $restaurentLong . ")) 
+
+        + sin(radians(" .$restaurentLat. ")) 
+
+        * sin(radians(rider_infos.lat))) AS distance"))
+
+        ->groupBy("rider_infos.id")
+        ->orderBy("distance")
+        ->get();
   
         return response()->json(['status' => 'success', 'data' => $nearestRider],200);
       }
