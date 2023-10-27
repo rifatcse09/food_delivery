@@ -52,12 +52,12 @@
 <ol>
 <li>
 <p>Clone the repository:</p>
-<pre><code>git clone https://github.com/rifatcse09/project.git
+<pre><code>git clone https://github.com/rifatcse09/food_delivery
 </code></pre>
 </li>
 <li>
 <p>Navigate to the cloned directory:</p>
-<pre><code>cd laradok
+<pre><code>cd food_delivery
 </code></pre>
 </li>
 <li>
@@ -78,8 +78,7 @@
 </code></pre>
 <p>The containers can be accessed at:</p>
 <ul>
-<li>Nginx: <code>http://localhost:8081</code></li>
-<li>Mailhog: <code>http://localhost:8025</code></li>
+<li>Nginx: <code>http://127.0.0.1/:8081</code></li>
 </ul>
 <p>To stop the containers, run the following command:</p>
 <pre><code>docker-compose down
@@ -90,9 +89,6 @@
 <li>Nginx: serves the Laravel application</li>
 <li>PHP: runs the Laravel application</li>
 <li>MySQL: stores the application data</li>
-<li>Mailhog: checking &amp; testing the application emails on locally</li>
-<li>Redis: stores application cache and sessions</li>
-<li>Worker: managing background jobs</li>
 </ul>
 <h2 id="volumes">Volumes</h2>
 <p>The <code>./data</code> directory is used to store persistent data for the MySQL and Redis services.</p>

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiderInfoController;
+use App\Http\Controllers\RestaurantInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('riders', 'RiderInfoController');
 Route::post('riders', [RiderInfocontroller::class,'store']);
+Route::post('restaurant', [RestaurantInfoController::class,'store']);
+Route::get('rider/{id}',[RiderInfoController::class,'getRiders']);
